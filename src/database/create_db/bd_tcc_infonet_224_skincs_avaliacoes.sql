@@ -19,6 +19,8 @@
 -- Table structure for table `avaliacoes`
 --
 
+SELECT av_id, usu_id, av_nota, av_comentario, av_moderacao FROM avaliacoes;
+
 DROP TABLE IF EXISTS `avaliacoes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;

@@ -19,6 +19,8 @@
 -- Table structure for table `ocorrencias`
 --
 
+SELECT oco_id, trans_id, oco_valor, oco_situacao, oco_data FROM ocorrencias;
+
 DROP TABLE IF EXISTS `ocorrencias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;

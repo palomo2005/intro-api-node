@@ -19,6 +19,8 @@
 -- Table structure for table `skins`
 --
 
+SELECT skin_id, usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_img, skin_status, skin_float FROM skins
+
 DROP TABLE IF EXISTS `skins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
