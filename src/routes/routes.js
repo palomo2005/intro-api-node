@@ -5,7 +5,11 @@ const skinsController = require('../controllers/skins');
 const ocorrenciasController = require('../controllers/ocorrencias');
 
 router.get('/skins', skinsController.listarSkins);
+router.post('/skins', skinsController.cadastrarSkins);
+router.patch('/skins', skinsController.editarSkins);
+router.delete('/skins', skinsController.apagarSkins);
 
-router.get('/ocorrencias', ocorrenciasController.listarOcorrencias);
+
+// router.get('/ocorrencias', ocorrenciasController.listarOcorrencias);
 
 module.exports = router
