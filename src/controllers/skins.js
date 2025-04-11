@@ -1,12 +1,18 @@
-const dp = require('../database/connection')
+const db = require('../database/connection')
 
 module.exports = {
     async listarSkins(request, response) {
         try {
+
+            const sql = 'SELECT skin_id, usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float FROM skins;';
+
+            const [rows] = await db.query(sql);
+
             return response.status(200).json({
                 sucesso: true,
                 mensagem: 'Lista de skins.',
-                dados: null
+                itens: rows.length,
+                dados: rows
             });
         } catch (error) {
             return response.status(500).json({
@@ -63,3 +69,4 @@ module.exports = {
         }
     }
 }
+
