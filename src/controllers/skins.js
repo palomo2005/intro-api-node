@@ -24,10 +24,30 @@ module.exports = {
     },
     async cadastrarSkins(request, response) {
         try {
+
+            const {usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float} = request.body;
+
+            const sql = `
+                INSERT INTO skins 
+                    (usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float)
+                VALUES
+                    (?, ?, ?, ?, ?, ?, ?);
+                `;
+
+                const values = [usu_id, skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float];
+
+                const [result] = await db.query(sql, values);
+
+                const dados = {
+                    id: result.insertId,
+                    skin_nome,
+                    skin_data
+                }
+
             return response.status(200).json({
                 sucesso: true,
                 mensagem: 'Cadastro de skins.',
-                dados: null
+                dados
             });
         } catch (error) {
             return response.status(500).json({
