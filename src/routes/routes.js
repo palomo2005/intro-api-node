@@ -6,7 +6,7 @@ const ocorrenciasController = require('../controllers/ocorrencias');
 
 router.get('/skins', skinsController.listarSkins);
 router.post('/skins', skinsController.cadastrarSkins);
-router.patch('/skins', skinsController.editarSkins);
+router.patch('/skins/:skin_id', skinsController.editarSkins);
 router.delete('/skins', skinsController.apagarSkins);
 
 

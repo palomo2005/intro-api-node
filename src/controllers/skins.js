@@ -60,10 +60,25 @@ module.exports = {
 
     async editarSkins(request, response) {
         try {
+
+            const {skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float} = request.body;
+
+            const {skin_id} = request.params
+
+            const sql = `
+                UPDATE skins 
+                    SET skin_nome = ?, skin_cond = ?, skin_preco = ?, skin_data = ?, skin_status = ?, skin_float = ?
+                WHERE skin_id = ?;
+                `;
+            
+            const values = [skin_nome, skin_cond, skin_preco, skin_data, skin_status, skin_float, skin_id];
+
+            const atualizaDados = await db.query(sql, values);
+            
             return response.status(200).json({
                 sucesso: true,
-                mensagem: 'Atualização de skins.',
-                dados: null
+                mensagem: `Skins ${skin_id} atualizado com sucesso!`,
+                dados: atualizaDados[0].affectedRows
             });
         } catch (error) {
             return response.status(500).json({
