@@ -90,9 +90,25 @@ module.exports = {
     },
     async apagarSkins(request, response) {
         try {
+            // parâmentro passado via url na chamada da api pelo front-end
+            const { id } = request.params;
+            // comando de exclusão
+            const sql = `DELETE FROM skins WHERE skin_id = ?`;
+            // array com parâmetros da exclusão
+            const values = [id];
+            // executa instrução no banco de dados
+            const [result] = await db.query(sql, values);
+
+            if (result.affectedRows === 0) {
+                return response.status(404).json({
+                    sucesso: false,
+                    mensagem: `Skin ${skin_id} não encontrado!`
+                });
+            }
+
             return response.status(200).json({
                 sucesso: true,
-                mensagem: 'Apagar skins.',
+                mensagem: `Skin ${id} excluído com sucesso`,
                 dados: null
             });
         } catch (error) {
