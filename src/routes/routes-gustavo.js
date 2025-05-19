@@ -9,3 +9,5 @@ router.patch('/ocorrencias/:oco_id', OcorrenciasController.editarOcorrencias);
 router.delete('/ocorrencias', OcorrenciasController.apagarOcorrencias);
 
 module.exports = router;
+
+// clonado
