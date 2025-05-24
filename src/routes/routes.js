@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const skinsController = require('../controllers/skins');
-const ocorrenciasController = require('../controllers/ocorrencias');
+const RotasPalomo = require('./routes-palomo');
+const RotasJoao = require('./routes-joao');
+const RotasCilas = require('./routes-cilas');
+const RotasGustavo = require('./routes-gustavo');
 
-router.get('/skins', skinsController.listarSkins);
-router.post('/skins', skinsController.cadastrarSkins);
-router.patch('/skins', skinsController.editarSkins);
-router.delete('/skins', skinsController.apagarSkins);
+router.use('/', RotasPalomo);
+router.use('/', RotasJoao);
+router.use('/', RotasCilas);
+router.use('/', RotasGustavo);
 
-
-// router.get('/ocorrencias', ocorrenciasController.listarOcorrencias);
-
-module.exports = router
+module.exports = router;
